@@ -105,6 +105,14 @@ var checkAnswers = function () {
   correct = 1;
   incorrect = 0;
 
+  if (correct === 1) {
+    correct = 0;
+  }
+
+  if (incorrect === 7) {
+    correct = 0;
+  }
+
   for (var i = 1; i <= 7; i++) {
     
     if ($('.correct' + [i]).is(':checked')) {
@@ -117,9 +125,7 @@ var checkAnswers = function () {
   }
 
   // Hacky fix for the bug that counts correct incorrectly
-  if (incorrect === 7) {
-    correct = 0;
-  }
+  
 
   $('#game').hide();
   $('#results').show();
