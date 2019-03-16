@@ -2,87 +2,178 @@ $(document).ready(function () {
 
   // Hide the game on document ready and listen for click events
   $('#game').hide();
-  $('#start').on('click', triviaGame.startGame);
-  // $(document).on('click', '.choice', triviaGame.checkGuess);
+  $('#results').hide();
+  $('#start').on('click', startGame);
+  $('#submit').on('click', checkAnswers);
+  $('#restart').on('click', startGame);
 
 });
 
-var triviaGame = {
-  // Initial game values
-  correct: 0,
-  incorrect: 0,
-  unanswered: 0,
-  questionsShown: [],
-  timer: 20,
-  timerOn: false,
 
-  // Questions, choices, and correct answer arrays
-  questions: [
-    'Which of these is not a subtitle of one of the games in the Elder Scrolls series?',
-    'Who is the main character in the God of War game series?',
-    'Which of these is NOT the nickname of a character in the Modern Warfare series?',
-    'Who is the AI assistant in the Halo series?',
-    'In what land does The Legend of Zelda take place?',
-    'Which is estimated to have made the most money as a franchise?',
-    'Which is not typically a starter Pokemon?'
-  ],
-  choices: [
-    ['Morrowind', 'Skyrim', 'Cyrodiil', 'Oblivion'],
-    ['Kratos', 'Zeus', 'Ares', 'Mars'],
-    ['Ghost', 'Soap', 'Roach', 'Bear'],
-    ['Cortana', 'Alexa', 'Siri', 'SPARTAN'],
-    ['Nirn', 'Hyrule', 'Mushroom Kingdom', 'Daventry'],
-    ['Mario', 'Pokemon', 'Call of Duty', 'World of Warcraft'],
-    ['Bulbasaur', 'Charmander', 'Squirtle', 'Mew']
-  ], 
-  answers: [
-    'Cyrodiil',
-    'Kratos',
-    'Bear',
-    'Cortana',
-    'Hyrule',
-    'Pokemon',
-    'Mew'
-  ],
+// Initial game values
+var correct = 0;
+var incorrect = 0;
 
-  // Method to start a new game
-  startGame: function () {
-    // Reset trivia game values
-    triviaGame.correct = 0;
-    triviaGame.incorrect = 0;
-    triviaGame.unanswered = 0;
+var intervalId;
+var timer = 70;
+var timerOn = false;
 
-    // Hide welcome messages and show the game
-    $('#game').show();
-    $('#welcome').hide();
+// Questions, choices, and correct answer arrays
+var questions = [
+  'Which of these is not a subtitle of one of the games in the Elder Scrolls series?',
+  'Who is the main character in the God of War game series?',
+  'Which of these is NOT the nickname of a character in the Modern Warfare series?',
+  'Who is the AI assistant in the Halo series?',
+  'In what land does The Legend of Zelda take place?',
+  'Which is estimated to have made the most money as a franchise?',
+  'Which is not typically a starter Pokemon?'
+];
 
-    triviaGame.newQuestion();
-  },
+var choices = [
+  ['Morrowind', 'Skyrim', 'Cyrodiil', 'Oblivion'],
+  ['Kratos', 'Zeus', 'Ares', 'Mars'],
+  ['Ghost', 'Soap', 'Roach', 'Bear'],
+  ['Cortana', 'Alexa', 'Siri', 'SPARTAN'],
+  ['Nirn', 'Hyrule', 'Mushroom Kingdom', 'Daventry'],
+  ['Mario', 'Pokemon', 'Call of Duty', 'World of Warcraft'],
+  ['Bulbasaur', 'Charmander', 'Squirtle', 'Mew']
+];
 
-  // Method to advance to next question
-  newQuestion: function () {
-    var questionsShown = triviaGame.questionsShown;
-    var questions = triviaGame.questions;
+var answers = [
+  'Cyrodiil',
+  'Kratos',
+  'Bear',
+  'Cortana',
+  'Hyrule',
+  'Pokemon',
+  'Mew'
+];
 
-    // Set timer to 20 seconds and show in HTML
-    triviaGame.timer = 20;
-    $('#timer').text(triviaGame.timer);
+// Function to start game
+var startGame = function () {
+  // Reset trivia game values
+  correct = 0;
+  incorrect = 0;
+  unanswered = 0;
+  timerOn = false;
 
-    // Choose question and then push it to questionsShown array
-    var currentQuestion = questions[Math.floor(Math.random() * triviaGame.questions.length)];
-    var currentChoices = triviaGame.choices[questions.indexOf(currentQuestion)];
-    console.log(currentQuestion);
-    console.log(currentChoices);
+  if (timeOn = true) {
+    timer = 70;
+    clearInterval(intervalId);
+  }
 
-    if (questionsShown.indexOf(currentQuestion) < 0) {
-      $('#question').text(currentQuestion);
-      $(triviaGame.questionsShown).push(currentQuestion);
-      $('#choice1').text('A: ' + currentChoices[0]);
-      $('#choice2').text('B: ' + currentChoices[1]);
-      $('#choice3').text('C: ' + currentChoices[2]);
-      $('#choice4').text('D: ' + currentChoices[3]);
-    } else {
-      newQuestion();
+  $('input').attr('checked', false);
+
+  // Show timer in HTML
+  $('#timer').text(timer);
+
+  // Hide welcome messages and show the game
+  $('#game').show();
+  $('#welcome').hide();
+  $('#results').hide();
+
+  // Populate page with questions
+  for (var i = 0; i < questions.length; i++) {
+    $("#q" + [i + 1]).text([i + 1] + '. ' + questions[i]);
+  }
+
+  // Begin timer countdown from 60 to 0
+  if (!timerOn) {
+    intervalId = setInterval(countdown, 1000);
+    timerOn = true;
+  }
+
+  function countdown() {
+    timer--;
+    $('#timer').text(timer);
+
+    if (timer === 0) {
+      clearInterval(intervalId);
+      alert("Time's up!");
+      checkAnswers();
     }
   }
+
+};
+
+// Function to check answers
+var checkAnswers = function () {
+  correct = 0;
+  incorrect = 0;
+  if (document.getElementById('correct1').checked) {
+    correct++;
+    console.log(correct);
+  }
+  
+  if (document.getElementById('incorrect1').checked) {
+    incorrect++;
+    console.log(incorrect);
+  }
+
+  if (document.getElementById('correct2').checked) {
+    correct++;
+    console.log(correct);
+  }
+  
+  if (document.getElementById('incorrect2').checked) {
+    incorrect++;
+    console.log(incorrect);
+  }
+
+  if (document.getElementById('correct3').checked) {
+    correct++;
+    console.log(correct);
+  }
+  
+  if (document.getElementById('incorrect3').checked) {
+    incorrect++;
+    console.log(incorrect);
+  }
+
+  if (document.getElementById('correct4').checked) {
+    correct++;
+    console.log(correct);
+  }
+  
+  if (document.getElementById('incorrect4').checked) {
+    incorrect++;
+    console.log(incorrect);
+  }
+
+  if (document.getElementById('correct5').checked) {
+    correct++;
+    console.log(correct);
+  }
+  
+  if (document.getElementById('incorrect5').checked) {
+    incorrect++;
+    console.log(incorrect);
+  }
+
+  if (document.getElementById('correct6').checked) {
+    correct++;
+    console.log(correct);
+  }
+  
+  if (document.getElementById('incorrect6').checked) {
+    incorrect++;
+    console.log(incorrect);
+  }
+
+  if (document.getElementById('correct7').checked) {
+    correct++;
+    console.log(correct);
+  } 
+  
+  if (document.getElementById('incorrect7').checked) {
+    incorrect++;
+    console.log(incorrect);
+  }
+
+  $('#correctCount').text(correct);
+  $('#incorrectCount').text(incorrect);
+
+  $('#game').hide();
+  $('#results').show();
+    
 }

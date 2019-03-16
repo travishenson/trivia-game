@@ -54,3 +54,23 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto;
   margin-bottom: 1em;
 }
+
+#game button {
+  display: block;
+  margin: 0 auto;
+  background-color: green;
+  color: white;
+  padding: 14px 30px;
+  font-size: 18px;
+  border-radius: 12px;
+}
+
+#results button {
+  display: block;
+  margin: 0 auto;
+  background-color: #f44336;
+  color: white;
+  padding: 14px 30px;
+  font-size: 18px;
+  border-radius: 12px;
+}

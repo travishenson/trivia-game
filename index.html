@@ -23,17 +23,65 @@
     </div>
 
     <div id="game">
-      <p id="timeRemaining">Time Remaining: <span id="timer"></span></p>
-      <p id="question"></p>
-      <p id="choices">
-        <p id="choice1" class="choice"></p>
-        <p id="choice2" class="choice"></p>
-        <p id="choice3" class="choice"></p>
-        <p id="choice4" class="choice"></p>
-      </p>
+      <p id="timeRemaining">Time Remaining: <span id="timer"></span> seconds</p>
+      <p id="questions"></p>
+        <p id="q1"></p>
+          <p id="c1">
+            <input type="radio" name="choice1" id="incorrect1"> Morrowind<br>
+            <input type="radio" name="choice1" id="incorrect1"> Skyrim<br>
+            <input type="radio" name="choice1" id="correct1"> Cyrodiil<br>
+            <input type="radio" name="choice1" id="incorrect1"> Oblivion<br>
+          </p>
+        <p id="q2"></p>
+          <p id="c2">
+              <input type="radio" name="choice2" id="correct2"> Kratos<br>
+              <input type="radio" name="choice2" id="incorrect2"> Zeus<br>
+              <input type="radio" name="choice2" id="incorrect2"> Ares<br>
+              <input type="radio" name="choice2" id="incorrect2"> Mars<br>
+          </p>
+        <p id="q3"></p>
+          <p id="c3">
+              <input type="radio" name="choice3" id="incorrect3"> Ghost<br>
+              <input type="radio" name="choice3" id="incorrect3"> Soap<br>
+              <input type="radio" name="choice3" id="incorrect3"> Roach<br>
+              <input type="radio" name="choice3" id="correct3"> Bear<br>
+          </p>
+        <p id="q4"></p>
+          <p id="c4">
+              <input type="radio" name="choice4" id="correct4"> Cortana<br>
+              <input type="radio" name="choice4" id="incorrect4"> Alexa<br>
+              <input type="radio" name="choice4" id="incorrect4"> Siri<br>
+              <input type="radio" name="choice4" id="incorrect4"> SPARTAN<br>
+          </p>
+        <p id="q5"></p>
+          <p id="c5">
+              <input type="radio" name="choice5" id="incorrect5"> Nirn<br>
+              <input type="radio" name="choice5" id="correct5"> Hyrule<br>
+              <input type="radio" name="choice5" id="incorrect5"> Mushroom Kingdom<br>
+              <input type="radio" name="choice5" id="incorrect5"> Daventry<br>
+          </p>
+        <p id="q6"></p>
+          <p id="c6">
+              <input type="radio" name="choice6" id="correct6"> Mario<br>
+              <input type="radio" name="choice6" id="incorrect6"> Pokemon<br>
+              <input type="radio" name="choice6" id="incorrect6"> Call of Duty<br>
+              <input type="radio" name="choice6" id="incorrect6"> World of Warcraft<br>
+          </p>
+        <p id="q7"></p>
+          <p id="c7">
+              <input type="radio" name="choice7" id="incorrect7"> Bulbasaur<br>
+              <input type="radio" name="choice7" id="incorrect7"> Charmander<br>
+              <input type="radio" name="choice7" id="incorrect7"> Squirtle<br>
+              <input type="radio" name="choice7" id="correct7"> Mew<br>
+          </p>
+        
+        <button id="submit">Submit</button>
     </div>
 
-    <div id="endGame">
+    <div id="results">
+      <h2>Correct: <span id="correctCount"></span></h2>
+      <h2>Incorrect: <span id="incorrectCount"></span></h2>
+      <button id="restart">Restart</button>
     </div>
   </div>
  
