@@ -7,6 +7,7 @@ $(document).ready(function () {
   $('#submit').on('click', checkAnswers);
   $('#restart').on('click', startGame);
 
+
 });
 
 
@@ -62,10 +63,11 @@ var startGame = function () {
     clearInterval(intervalId);
   }
 
-  $('input').attr('checked', false);
-
   // Show timer in HTML
   $('#timer').text(timer);
+
+  // Clear radio button selections if left from previous game
+  $('input[class = radioButton]').attr('checked', false);
 
   // Hide welcome messages and show the game
   $('#game').show();
@@ -87,7 +89,7 @@ var startGame = function () {
     timer--;
     $('#timer').text(timer);
 
-    if (timer === 0) {
+    if (timer === 0 & timerOn === true) {
       clearInterval(intervalId);
       alert("Time's up!");
       checkAnswers();
@@ -98,82 +100,25 @@ var startGame = function () {
 
 // Function to check answers
 var checkAnswers = function () {
+  timerOn = false;
+
   correct = 0;
   incorrect = 0;
-  if (document.getElementById('correct1').checked) {
-    correct++;
-    console.log(correct);
-  }
-  
-  if (document.getElementById('incorrect1').checked) {
-    incorrect++;
-    console.log(incorrect);
-  }
 
-  if (document.getElementById('correct2').checked) {
-    correct++;
-    console.log(correct);
+  for (var i = 0; i < 7; i++) {
+    if ($('.correct' + [i + 1]).is(':checked')) {
+      correct++; 
+      console.log(correct);
+    } else if ($('.incorrect' + [i + 1]).is(':checked')) {
+      incorrect++;
+      console.log(incorrect);
+    }
   }
-  
-  if (document.getElementById('incorrect2').checked) {
-    incorrect++;
-    console.log(incorrect);
-  }
-
-  if (document.getElementById('correct3').checked) {
-    correct++;
-    console.log(correct);
-  }
-  
-  if (document.getElementById('incorrect3').checked) {
-    incorrect++;
-    console.log(incorrect);
-  }
-
-  if (document.getElementById('correct4').checked) {
-    correct++;
-    console.log(correct);
-  }
-  
-  if (document.getElementById('incorrect4').checked) {
-    incorrect++;
-    console.log(incorrect);
-  }
-
-  if (document.getElementById('correct5').checked) {
-    correct++;
-    console.log(correct);
-  }
-  
-  if (document.getElementById('incorrect5').checked) {
-    incorrect++;
-    console.log(incorrect);
-  }
-
-  if (document.getElementById('correct6').checked) {
-    correct++;
-    console.log(correct);
-  }
-  
-  if (document.getElementById('incorrect6').checked) {
-    incorrect++;
-    console.log(incorrect);
-  }
-
-  if (document.getElementById('correct7').checked) {
-    correct++;
-    console.log(correct);
-  } 
-  
-  if (document.getElementById('incorrect7').checked) {
-    incorrect++;
-    console.log(incorrect);
-  }
-
-  $('#correctCount').text(correct);
-  $('#incorrectCount').text(incorrect);
 
   $('#game').hide();
   $('#results').show();
+
+  $('#correctCount').text(correct);
+  $('#incorrectCount').text(incorrect);
     
 }
