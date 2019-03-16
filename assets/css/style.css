@@ -1,0 +1,56 @@
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+
+  /* Background Image */
+  background: url('../images/gaming-pattern.png');
+
+  /* Font Family */
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Work Sans', sans-serif;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 1em;
+  margin-top: 2em;
+  background-color: white;
+  border: 2px solid grey;
+}
+
+.container h1 {
+  text-align: center;
+}
+
+.container p {
+  width: 65%;
+  margin: 0 auto;
+}
+
+#start {
+  margin: 2em;
+}
+
+#start button {
+  display: block;
+  margin: 0 auto;
+  background-color: #f44336;
+  color: white;
+  padding: 14px 40px;
+  font-size: 24px;
+  border-radius: 12px;
+}
+
+#game {
+  margin: 0 auto;
+}
+
+#game p {
+  margin: 0 auto;
+  margin-bottom: 1em;
+}

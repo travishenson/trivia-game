@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Work+Sans" rel="stylesheet">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <title>Video Game Trivia</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Video Game Trivia</h1>
+    <div id="welcome">
+      <p>Welcome to Video Game Trivia! The goal is pretty simple: answer as many questions correctly as you can before time runs out. Simply press the "start" button to begin.</p>
+
+      <div id="start">
+        <button>Start</button>
+      </div>
+    </div>
+
+    <div id="game">
+      <p id="timeRemaining">Time Remaining: <span id="timer"></span></p>
+      <p id="question"></p>
+      <p id="choices">
+        <p id="choice1" class="choice"></p>
+        <p id="choice2" class="choice"></p>
+        <p id="choice3" class="choice"></p>
+        <p id="choice4" class="choice"></p>
+      </p>
+    </div>
+
+    <div id="endGame">
+    </div>
+  </div>
+ 
+  <script src="assets/javascript/app.js"></script>
+</body>
+</html>
